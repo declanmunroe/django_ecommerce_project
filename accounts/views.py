@@ -10,7 +10,7 @@ def get_index(request):
 def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
-    return redirect("home")
+    return redirect("index")
     
 def login(request):
     if request.method == "POST":
