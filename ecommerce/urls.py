@@ -16,10 +16,19 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from accounts.views import get_index
+from products.views import all_products
 from accounts import urls as accounts_urls
+from products import urls as products_urls
+from cart import urls as carts_urls
+from .settings import MEDIA_ROOT
+from django.views import static
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', get_index, name="home"),
+    url(r'^$', all_products, name="index"),
     url(r"^accounts/", include(accounts_urls)),
+    url(r"^products/", include(products_urls)),
+    url(r'^media/(?P<path>.*)$', static.serve,{'document_root': MEDIA_ROOT}),
+    url(r'^cart/', include(carts_urls)),
 ]
