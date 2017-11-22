@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     "django_forms_bootstrap",
     "products",
     "accounts",
-    "cart"
+    "cart",
+    "checkout",
 ]
 
 MIDDLEWARE = [
@@ -140,4 +141,5 @@ STATICFILES_DIRS = (
     
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
+STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET = os.getenv("STRIPE_SECRET_KEY")
